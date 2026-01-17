@@ -3,6 +3,7 @@ public class Shelter {
     private String name;
     private String location;
     private double rating;
+    private int id;
     // Constructors
     public Shelter(String name, String location, double rating) {
         this.name = name;
@@ -32,6 +33,10 @@ public class Shelter {
     public void setRating(double rating) {
         this.rating = rating;
     }
+
+    // for id:
+    public int getId() { return id; }
+    public void setId(int id) { this.id = id; }
 
     // ---- Methods ----
     public void printInfo() {

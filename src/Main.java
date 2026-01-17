@@ -1,7 +1,9 @@
 public class Main {
     public static void main(String[] args) {
+        DatabaseManager dbManager = new DatabaseManager();
+        PetRepository repo = new PetRepository(dbManager);
 
-        // --- Create shelters ---
+        // --- Create shelters --- 
         Shelter shelter1 = new Shelter("Test1", "52 Turan Ave.", 4.6);
         Shelter shelter2 = new Shelter("Paw patrol", "14 Tole Bi St.", 3.9);
         Shelter shelter3 = new Shelter("Zootopia", "123 Uly Dala St.", 5.0);
@@ -47,8 +49,12 @@ public class Main {
         System.out.println("\nShelter with the best rating: \"" +
                 bestShelter.getName() + "\" (Rating: " + bestShelter.getRating() + ")");
 
+        shelter1.setId(1);
+        shelter2.setId(2);
+        shelter3.setId(3);
+
         // --- Repository usage ---
-        PetRepository repo = new PetRepository();
+        System.out.println("\n--- DATABASE SYNCHRONIZATION ---");
         repo.addPet(pet1);
         repo.addPet(pet2);
         repo.addPet(pet3);
@@ -72,5 +78,6 @@ public class Main {
         System.out.println("\n--- POLYMORPHISM ---");
         System.out.println(pet1.getName() + " says: " + pet1.getPetSound());
         System.out.println(pet2.getName() + " says: " + pet2.getPetSound());
+        
     }
 }
