@@ -1,5 +1,7 @@
 package com.petadoption.model;
 
+import java.util.Objects;
+
 public class Adopter {
     // Attributes
     private String name;
@@ -38,5 +40,23 @@ public class Adopter {
     // ---- Methods ----
     public void printInfo() {
         System.out.println("Name: " + name + ", Age: " + age + ", Adopted pet: " + pet.getName());
+    }
+
+    @Override
+    public String toString() {
+        return "Adopter{name='" + name + "', age=" + age + ", pet=" + (pet != null ? pet.getName() : "None") + "}";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Adopter)) return false;
+        Adopter adopter = (Adopter) o;
+        return Objects.equals(name, adopter.name) && Objects.equals(pet, adopter.pet);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, pet);
     }
 }

@@ -4,7 +4,6 @@ import com.petadoption.exception.InvalidInputException;
 import com.petadoption.exception.ResourceNotFoundException;
 import com.petadoption.model.*;
 import com.petadoption.repository.IPetRepository;
-import com.petadoption.repository.PetRepository;
 import com.petadoption.service.PetService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -13,9 +12,9 @@ import org.springframework.stereotype.Component;
 public class Main implements CommandLineRunner {
 
     private final PetService petService;
-    private final PetRepository repo;
+    private final IPetRepository repo;
 
-    public Main(PetService petService, PetRepository repo) {
+    public Main(PetService petService, IPetRepository repo) {
         this.petService = petService;
         this.repo = repo;
     }
@@ -99,7 +98,7 @@ public class Main implements CommandLineRunner {
         }
 
         System.out.println("\n--- AVAILABLE PETS ---");
-        for (Pet p : repo.getAvailablePets()) {
+        for (Pet p : petService.getAvailablePets()) {
             System.out.println(p);
         }
 
@@ -110,9 +109,9 @@ public class Main implements CommandLineRunner {
             System.err.println(e.getMessage());
         }
 
-        repo.sortByAge();
+        petService.sortByAge();
         System.out.println("\n--- SORTED BY AGE ---");
-        for (Pet p : repo.getAllPets()) {
+        for (Pet p : petService.getAllPets()) {
             System.out.println(p);
         }
 

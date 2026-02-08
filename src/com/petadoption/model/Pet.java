@@ -1,7 +1,20 @@
 package com.petadoption.model;
 
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+
 import java.util.Objects;
 
+@JsonTypeInfo(
+        use = JsonTypeInfo.Id.NAME,
+        include = JsonTypeInfo.As.EXISTING_PROPERTY,
+        property = "type",
+        visible = true
+)
+@JsonSubTypes({
+        @JsonSubTypes.Type(value = Dog.class, name = "Dog"),
+        @JsonSubTypes.Type(value = Cat.class, name = "Cat")
+})
 public abstract class Pet {
     // Attributes
     private String name;
@@ -11,6 +24,9 @@ public abstract class Pet {
     private Shelter shelter;
 
     // Constructors
+    protected Pet() {
+    }
+
     public Pet(String name, String type, int age, boolean adopted, Shelter shelter) {
         this.name = name;
         this.type = type;

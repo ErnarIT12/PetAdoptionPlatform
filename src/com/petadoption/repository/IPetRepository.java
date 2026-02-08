@@ -4,11 +4,11 @@ import com.petadoption.model.Pet;
 import java.util.List;
 
 public interface IPetRepository {
-    void addPet(Pet pet);
-    List<Pet> getAvailablePets();
+    boolean create(Pet pet);
+    boolean updateByName(String name, Pet pet);
+    boolean deleteByName(String name);
     Pet findByName(String name);
-    void sortByAge();
-    List<Pet> getAllPets();
+    List<Pet> findAll();
 
     // Default method (Language Feature)
     default void logRepositoryAccess() {
