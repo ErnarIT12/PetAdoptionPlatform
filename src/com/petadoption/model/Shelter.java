@@ -1,24 +1,27 @@
+package com.petadoption.model;
+
 public class Shelter {
     // Attributes
     private String name;
     private String location;
     private double rating;
     private int id;
+
     // Constructors
     public Shelter(String name, String location, double rating) {
         this.name = name;
         this.location = location;
         this.rating = rating;
     }
+
     // ---- Getters and Setters -----
-    // for name:
     public String getName() {
         return name;
     }
     public void setName(String name) {
         this.name = name;
     }
-    // for location:
+
     public String getLocation() {
         return location;
     }
@@ -26,7 +29,6 @@ public class Shelter {
         this.location = location;
     }
 
-    // for rating:
     public double getRating() {
         return rating;
     }
@@ -34,7 +36,6 @@ public class Shelter {
         this.rating = rating;
     }
 
-    // for id:
     public int getId() { return id; }
     public void setId(int id) { this.id = id; }
 
@@ -44,4 +45,3 @@ public class Shelter {
                 ", Rating: " + rating);
     }
 }
-

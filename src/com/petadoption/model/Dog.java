@@ -1,3 +1,5 @@
+package com.petadoption.model;
+
 public class Dog extends Pet {
 
     public Dog(String name, String type, int age, boolean adopted, Shelter shelter) {
